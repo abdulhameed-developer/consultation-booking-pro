@@ -1,0 +1,102 @@
+:root {
+    --cbp-primary: #d63638;
+    --cbp-primary-hover: #b92b2d;
+    --cbp-bg-light: #f9fafb;
+    --cbp-text-dark: #111827;
+    --cbp-text-gray: #4b5563;
+    --cbp-border-gray: #e5e7eb;
+    --cbp-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+}
+
+#cbp-booking-app {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--cbp-text-dark);
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+/* Header */
+.cbp-form-header { text-align: center; margin-bottom: 50px; }
+.cbp-form-header h1 { font-size: 36px; font-weight: 800; margin: 0 0 15px 0; }
+.cbp-divider { height: 3px; width: 60px; background: var(--cbp-primary); margin: 0 auto 20px; }
+
+/* Grid */
+.cbp-grid-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; }
+@media (max-width: 900px) { .cbp-grid-container { grid-template-columns: 1fr; } }
+
+/* Fields */
+.cbp-fields-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+.cbp-field-wrapper { margin-bottom: 0; position: relative; }
+.cbp-field-wrapper.full-width { width: 100%; }
+.cbp-field-wrapper.half-width { width: calc(50% - 10px); }
+.cbp-field-wrapper.third-width { width: calc(33.3% - 14px); }
+
+@media (max-width: 600px) {
+    .cbp-field-wrapper { width: 100% !important; }
+}
+
+.cbp-field-wrapper label { display: block; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; color: #374151; }
+.cbp-field-wrapper label .req { color: var(--cbp-primary); }
+
+.cbp-field-wrapper input,
+.cbp-field-wrapper select,
+.cbp-field-wrapper textarea {
+    width: 100%; padding: 14px; border: 1px solid var(--cbp-border-gray); border-radius: 12px;
+    background: var(--cbp-bg-light); transition: all 0.2s; font-size: 15px;
+}
+
+.cbp-field-wrapper input:focus, .cbp-field-wrapper select:focus, .cbp-field-wrapper textarea:focus {
+    background: #fff; border-color: var(--cbp-primary); outline: none; box-shadow: 0 0 0 4px rgba(214, 54, 56, 0.1);
+}
+
+/* Bug 7.2: Hide native date picker icons to prevent doubles */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent; bottom: 0; color: transparent; cursor: pointer; height: auto; left: 0; position: absolute; right: 0; top: 0; width: auto;
+}
+
+/* Country Dropdown Fix (Bug 7.1) */
+.cbp-whatsapp-input { display: flex; border: 1px solid var(--cbp-border-gray); border-radius: 12px; background: var(--cbp-bg-light); position: relative; }
+.cbp-dial-selector { padding: 0 15px; border-right: 1px solid var(--cbp-border-gray); display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; min-width: 80px; }
+
+.cbp-country-dropdown {
+    position: absolute; top: calc(100% + 8px); left: 0; width: 300px; max-height: 300px;
+    background: #fff; border: 1px solid var(--cbp-border-gray); border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 9999; display: none; flex-direction: column;
+    overflow: hidden;
+}
+.cbp-country-dropdown.active { display: flex; }
+
+.cbp-dropdown-search { padding: 10px; border-bottom: 1px solid var(--cbp-border-gray); position: sticky; top: 0; background: #fff; }
+.cbp-dropdown-search input { padding: 8px 12px !important; font-size: 13px !important; border-radius: 8px !important; }
+
+.cbp-country-list { flex: 1; overflow-y: auto; padding: 5px 0; }
+.cbp-country-item { padding: 10px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: background 0.2s; }
+.cbp-country-item:hover { background: var(--cbp-bg-light); }
+.cbp-country-item .name { flex:1; font-size: 14px; }
+.cbp-country-item .code { font-size: 12px; color: var(--cbp-text-gray); }
+
+/* Booking Card */
+.cbp-booking-card { background: #fff; padding: 30px; border-radius: 24px; border: 1px solid var(--cbp-border-gray); box-shadow: var(--cbp-shadow); }
+.cbp-section-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.cbp-section-title::after { content: ""; flex: 1; height: 1px; background: var(--cbp-border-gray); }
+
+/* Dates & Times */
+.cbp-date-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 25px; }
+.cbp-date-card { background: var(--cbp-bg-light); border: 1px solid var(--cbp-border-gray); border-radius: 12px; padding: 12px 5px; text-align: center; cursor: pointer; transition: all 0.2s; }
+.cbp-date-card.active { background: var(--cbp-primary); color: #fff; border-color: var(--cbp-primary); }
+.cbp-date-card .day { font-size: 10px; font-weight: 700; text-transform: uppercase; display: block; opacity: 0.7; }
+.cbp-date-card .date { font-size: 15px; font-weight: 800; }
+
+.cbp-time-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+.cbp-time-btn { background: #fff; border: 1px solid var(--cbp-border-gray); border-radius: 10px; padding: 12px; text-align: center; font-weight: 700; font-size: 13px; cursor: pointer; }
+.cbp-time-btn.active { background: var(--cbp-primary); color: #fff; border-color: var(--cbp-primary); }
+
+/* Status */
+.cbp-success-view { text-align: center; padding: 50px; background: #fff; border-radius: 24px; border: 1px solid var(--cbp-border-gray); box-shadow: var(--cbp-shadow); }
+.cbp-spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid rgba(0,0,0,0.1); border-top-color: #fff; border-radius: 50%; animation: cbp-spin 0.8s linear infinite; vertical-align: middle; margin-right: 10px; }
+@keyframes cbp-spin { to { transform: rotate(360deg); } }
+
+.cbp-error-box { background: #fee2e2; border-radius: 12px; padding: 15px; color: #dc2626; font-weight: 600; margin-top: 20px; text-align: center; border: 1px solid #fecaca; }
+
+.cbp-btn-submit { width: 100%; padding: 18px; background: var(--cbp-primary); color: #fff; border: none; border-radius: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; }
+.cbp-btn-submit:hover { background: var(--cbp-primary-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(214, 54, 56, 0.2); }

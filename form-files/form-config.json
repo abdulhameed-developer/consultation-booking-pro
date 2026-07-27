@@ -1,0 +1,70 @@
+[
+    {
+        "id": "header",
+        "type": "section",
+        "label": "Form Header",
+        "fields": [
+            { "id": "title", "type": "html", "content": "<h1 style='font-size:36px; font-weight:800; margin-bottom:10px;'>Request a Consultation</h1>" },
+            { "id": "desc", "type": "html", "content": "<p style='color:#64748b; font-size:16px; margin-bottom:20px;'>Fill in your details, choose a date, and select the best available time.</p>" },
+            { "id": "req-note", "type": "html", "content": "<p style='font-size:13px; color:#94a3b8; margin-bottom:30px;'><span style='color:#d63638;'>*</span> indicates required fields</p>" }
+        ]
+    },
+    {
+        "id": "left-col",
+        "type": "column",
+        "width": "60%",
+        "rows": [
+            {
+                "id": "row-1",
+                "fields": [
+                    { "id": "student_name", "type": "text", "label": "Full Name", "placeholder": "Enter your full name", "required": true, "width": "50%" },
+                    { "id": "student_email", "type": "email", "label": "Email Address", "placeholder": "Enter your email address", "required": true, "width": "50%" }
+                ]
+            },
+            {
+                "id": "row-2",
+                "fields": [
+                    { "id": "country", "type": "country", "label": "Select country", "placeholder": "Select your country", "required": true, "width": "50%" },
+                    { "id": "student_phone", "type": "whatsapp", "label": "WhatsApp Number", "placeholder": "Phone number", "required": true, "width": "50%" }
+                ]
+            },
+            {
+                "id": "row-3",
+                "fields": [
+                    { "id": "study_level", "type": "select", "label": "Preferred Study Level", "placeholder": "Select study level", "required": true, "options": "English Language Program,Foundation,Diploma,Bachelors,Masters,PhD" }
+                ]
+            },
+            {
+                "id": "row-4",
+                "fields": [
+                    { "id": "interested_field", "type": "select", "label": "Interested Field", "placeholder": "Select your field of interest", "required": true, "options": "Accounting,Artificial Intelligence (AI),Banking and Finance,Biomedical Engineering,Business Analytics,Chemical Engineering,Civil Engineering,Computer Science,Cyber Security,Data Science,E-Commerce,Economics,Fintech,Industrial Engineering,Information Technology (IT),International Business,Logistics,Marketing,Mechatronics Engineering,Petroleum Engineering,Robotics Engineering,Software Engineering,Telecommunication Engineering,Tourism and Hospitality,Other" }
+                ]
+            },
+            {
+                "id": "row-5",
+                "fields": [
+                    { "id": "message", "type": "textarea", "label": "Tell us what you need help with", "placeholder": "Tell us about your goals...", "required": true, "rows": 4 }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "right-col",
+        "type": "column",
+        "width": "40%",
+        "widgets": [
+            { "id": "booking_date_cards", "type": "date-cards", "label": "Choose a Date", "count": 7 },
+            { "id": "booking_date_picker", "type": "date-picker", "label": "Or select from calendar", "placeholder": "dd-mm-yyyy" },
+            { "id": "date-helper", "type": "html", "content": "<p style='font-size:13px; color:#64748b; font-style:italic; margin:15px 0;'>Students can either choose a highlighted available date or select any preferred date from the calendar.</p>" },
+            { "id": "booking_time_buttons", "type": "time-buttons", "label": "Choose a Time", "count": 4 },
+            { "id": "booking_time_dropdown", "type": "time-dropdown", "label": "All available time slots", "placeholder": "Please select a day first..." }
+        ]
+    },
+    {
+        "id": "footer",
+        "type": "section",
+        "fields": [
+            { "id": "submit", "type": "submit", "label": "Submit", "style": "primary" }
+        ]
+    }
+]

@@ -1,0 +1,405 @@
+/* 
+ * Consultation Booking Pro - Form Styles
+ * Production-Ready Professional Design
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --cbp-primary: #B21A1A;
+    --cbp-primary-hover: #d11a22;
+    --cbp-primary-light: rgba(236, 30, 40, 0.08);
+    --cbp-bg-page: #ffffff;
+    --cbp-bg-input: #f9fafb;
+    --cbp-bg-card: #ffffff;
+    --cbp-text-main: #1e293b;
+    --cbp-text-muted: #64748b;
+    --cbp-text-light: #94a3b8;
+    --cbp-border: #e2e8f0;
+    --cbp-border-focus: #ec1e28;
+    --cbp-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+    --cbp-radius: 12px;
+    --cbp-font: 'Inter', -apple-system, sans-serif;
+}
+
+#cbp-booking-app {
+    font-family: var(--cbp-font);
+    color: var(--cbp-text-main);
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.5;
+    position: relative;
+    /* Removed overflow:hidden to allow dropdowns to pop out if needed */
+}
+
+/* Layout */
+.cbp-grid {
+    display: grid;
+    grid-template-columns: 58fr 38fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.cbp-grid input[type=tel] {
+    height: 45px !important;
+}
+
+@media (max-width: 900px) {
+    .cbp-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* Header */
+.cbp-header {
+    margin-bottom: 40px;
+}
+.cbp-header h1 { font-size: 30px; font-weight: 700; margin: 0 0 10px 0; color: #111827; }
+.cbp-header p { color: var(--cbp-text-muted); font-size: 12px; margin: 0; }
+
+/* Form Fields */
+.cbp-field-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width: 600px) {
+    .cbp-field-row { flex-direction: column; gap: 15px; }
+}
+
+.cbp-field { flex: 1; min-width: 0; position: relative; }
+
+/* Custom Select & Panels */
+.cbp-custom-select { position: relative; width: 100%; }
+.cbp-select-trigger { 
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--cbp-bg-input); border: 1px solid var(--cbp-border); border-radius: var(--cbp-radius);
+    padding: 14px 16px; cursor: pointer; transition: all 0.2s;
+    font-size: 12px; color: var(--cbp-text-main);
+}
+.cbp-select-trigger:hover { border-color: var(--cbp-primary); }
+.cbp-select-trigger.cbp-field-error { border-color: #ef4444; background: #fef2f2; }
+.cbp-icon-chevron { 
+    color: var(--cbp-text-main); opacity: 0.6; 
+    transition: transform 0.2s ease-in-out; 
+    pointer-events: none;
+}
+.cbp-select-trigger.active .cbp-icon-chevron { transform: rotate(180deg); }
+
+.cbp-select-panel {
+    position: fixed; 
+    background: #fff; border: 1px solid var(--cbp-border); border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12); z-index: 999999;
+    display: none; flex-direction: column; overflow: hidden;
+}
+.cbp-select-panel.show { display: flex; animation: cbpFadeInUp 0.2s ease-out; }
+.cbp-select-panel.open-up { top: auto; bottom: calc(100% + 5px); }
+
+.cbp-option-list { max-height: 250px; overflow-y: auto; padding: 6px 0; }
+.cbp-option { 
+    padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #f1f5f9;
+    font-size: 12px; transition: background 0.2s;
+}
+.cbp-option:last-child { border-bottom: none; }
+.cbp-option:hover { background: #f8fafc; color: var(--cbp-primary); }
+.cbp-option.selected { background: var(--cbp-primary-light); color: var(--cbp-primary); font-weight: 600; }
+
+.cbp-label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #374151;
+}
+.cbp-label .req { color: var(--cbp-primary); margin-left: 2px; }
+
+.cbp-input-wrapper { position: relative; }
+
+.cbp-input-wrapper input,
+.cbp-input-wrapper select,
+.cbp-input-wrapper textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--cbp-bg-input);
+    border: 1px solid var(--cbp-border);
+    border-radius: var(--cbp-radius);
+    font-size: 12px;
+    font-family: inherit;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--cbp-text-main);
+}
+
+.cbp-input-wrapper input:focus,
+.cbp-input-wrapper select:focus,
+.cbp-input-wrapper textarea:focus {
+    background: #ffffff;
+    border-color: var(--cbp-border-focus);
+    outline: none;
+    box-shadow: 0 0 0 4px var(--cbp-primary-light);
+}
+
+.cbp-input-wrapper textarea { resize: vertical; min-height: 120px; }
+
+/* Custom Select Dropdown Arrow */
+.cbp-input-wrapper select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+    padding-right: 45px;
+}
+
+/* WhatsApp Input (Second Design) */
+.cbp-whatsapp-group {
+    display: flex;
+    background: var(--cbp-bg-input);
+    border: 1px solid var(--cbp-border);
+    border-radius: var(--cbp-radius);
+    overflow: visible;
+    position: relative;
+    transition: all 0.2s;
+/*     height: 52px; */
+}
+.cbp-whatsapp-group:focus-within {
+    background: #fff;
+    border-color: var(--cbp-border-focus);
+    box-shadow: 0 0 0 4px var(--cbp-primary-light);
+}
+
+.cbp-country-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+    border-right: 1px solid var(--cbp-border);
+    cursor: pointer;
+    background: #fff;
+    border-radius: var(--cbp-radius) 0 0 var(--cbp-radius);
+    min-width: 100px;
+    user-select: none;
+}
+.cbp-country-trigger:hover { background: #fcfcfc; }
+.cbp-country-trigger .flag { font-size: 12px; line-height: 1; }
+.cbp-country-trigger .dial { font-size: 12px; font-weight: 700; color: #1e293b; }
+.cbp-country-trigger .cbp-icon-chevron { opacity: 0.5; }
+.cbp-country-trigger.active .cbp-icon-chevron { transform: rotate(180deg); }
+
+.cbp-phone-field { border: none !important; background: transparent !important; flex: 1; box-shadow: none !important; padding: 14px 16px !important; font-size: 12px !important; font-weight: 500 !important; }
+
+/* Country Dropdown Panel */
+.cbp-country-panel {
+    position: fixed !important;
+    background: #fff;
+    border: 1px solid var(--cbp-border);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px -15px rgba(0,0,0,0.2);
+    z-index: 999999;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+.cbp-country-panel.show { display: flex; animation: cbpFadeInUp 0.15s ease-out; }
+.cbp-country-panel.open-up { top: auto; bottom: calc(100% + 8px); }
+
+.cbp-panel-search { 
+    padding: 12px !important; 
+    border-bottom: 1px solid #f1f5f9; 
+    position: relative !important; 
+    background: #fff; 
+    z-index: 10; 
+    display: flex; 
+    align-items: center; 
+}
+.cbp-panel-search input { 
+    padding: 10px 12px 10px 38px !important; 
+    font-size: 12px !important; 
+    border-radius: 10px !important; 
+    border: 1.5px solid #e2e8f0 !important; 
+    width: 100% !important; 
+    background: #f8fafc !important; 
+    margin: 0 !important;
+    display: block !important;
+}
+.cbp-icon-search { 
+    position: absolute !important; 
+    left: 24px !important; 
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #94a3b8 !important; 
+    z-index: 11;
+    pointer-events: none;
+}
+
+.cbp-country-list { max-height: 320px; overflow-y: auto; padding: 8px 0; }
+.cbp-country-item { 
+    padding: 12px 16px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: all 0.1s; 
+}
+.cbp-country-item:hover { background: #f8fafc; }
+.cbp-country-item .flag { font-size: 13px; }
+.cbp-country-item .name { flex: 1; font-size: 12px; font-weight: 500; color: #334155; }
+.cbp-country-item .code { font-size: 12px; font-weight: 600; color: #64748b; }
+
+/* Overlay to close dropdowns */
+.cbp-dropdown-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.01); z-index: 99998; display: none;
+}
+
+/* Scheduling Card (Right Column) */
+.cbp-booking-card {
+    background: var(--cbp-bg-card);
+    border: 1px solid var(--cbp-border);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: var(--cbp-shadow);
+}
+
+.cbp-group-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #4b5563;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cbp-group-title::after { content: ""; flex: 1; height: 1px; background: var(--cbp-border); }
+
+/* Quick Dates Grid - Issue 2: 6 COLUMN GRID */
+.cbp-date-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 25px;
+}
+@media (max-width: 900px) {
+    .cbp-date-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 600px) {
+    .cbp-date-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+}
+
+.cbp-date-card {
+    background: #ffffff;
+    border: 1.5px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 8px 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 0;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.cbp-date-card:hover:not(.disabled) { border-color: var(--cbp-primary); transform: translateY(-2px); }
+.cbp-date-card.active { background: var(--cbp-primary); border-color: var(--cbp-primary); color: #fff; box-shadow: 0 4px 12px rgba(214, 54, 56, 0.3); }
+.cbp-date-card.disabled { background: #f9fafb; color: #cbd5e1; border-color: #e2e8f0; cursor: not-allowed; pointer-events: none; }
+.cbp-date-card.disabled .day, .cbp-date-card.disabled .num { color: #cbd5e1; }
+
+.cbp-date-card .day { 
+    font-size: 10px; font-weight: 800; text-transform: uppercase; 
+    line-height: 1; letter-spacing: 0.5px; color: #94a3b8; margin-bottom: 4px;
+}
+.cbp-date-card.active .day { color: rgba(255,255,255,0.8); }
+
+.cbp-date-card .num { font-size: 16px; font-weight: 800; line-height: 1; color: #1e293b; }
+.cbp-date-card.active .num { color: #fff; }
+
+.cbp-date-card.card-7 { grid-column: 3 / 5; }
+@media (max-width: 900px) { .cbp-date-card.card-7 { grid-column: auto; } }
+
+/* Custom Search Input Icons - Legacy Removed */
+.cbp-calendar-icon-overlay {
+    position: absolute; right: 16px; top: 50%;;
+    color: var(--cbp-text-main); opacity: 0.5; pointer-events: none;
+    display: flex; align-items: center;
+}
+input[type="date"] { padding-right: 45px !important; }
+
+/* Date Picker Overrides */
+input[type="date"] { position: relative; }
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent; bottom: 0; color: transparent; cursor: pointer; height: auto; left: 0; position: absolute; right: 0; top: 0; width: auto;
+}
+
+/* Time Slots */
+.cbp-time-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+@media (max-width: 1100px) { .cbp-time-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.cbp-time-chip {
+    padding: 10px 5px;
+    border: 1px solid var(--cbp-border);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.2s;
+}
+.cbp-time-chip:hover { border-color: var(--cbp-primary); color: var(--cbp-primary); }
+.cbp-time-chip.active { background: var(--cbp-primary); color: #fff; border-color: var(--cbp-primary); }
+.cbp-time-chip.booked { opacity: 0.3; cursor: not-allowed; text-decoration: line-through; }
+
+/* Submit Section */
+.cbp-submit-area { margin-top: 40px; text-align: left; }
+.cbp-btn-submit {
+    background: var(--cbp-primary);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 45px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(214, 54, 56, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 250px;
+}
+.cbp-btn-submit:hover { 
+    background: var(--cbp-primary-hover); 
+    transform: translateY(-3px) scale(1.02); 
+    box-shadow: 0 10px 25px rgba(214, 54, 56, 0.35); 
+}
+.cbp-btn-submit:disabled { background: #cbd5e1; box-shadow: none; transform: none; cursor: not-allowed; }
+
+/* Error/Success Messages */
+.cbp-alert { padding: 15px 20px; border-radius: 12px; font-weight: 600; margin-bottom: 25px; display: none; }
+.cbp-alert-error { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+.cbp-alert-success { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; text-align: center; padding: 60px 40px; }
+
+/* Validation Errors */
+.cbp-field-error { border-color: #ef4444 !important; background-color: #fef2f2 !important; }
+.cbp-error-text { color: #ef4444; font-size: 12px; font-weight: 600; margin-top: 4px; display: block; }
+
+/* Spinner */
+.cbp-spinner {
+    display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
+    border-radius: 50%; animation: cbp-spin 0.8s linear infinite; vertical-align: middle; margin-right: 10px;
+}
+@keyframes cbp-spin { to { transform: rotate(360deg); } }
+
+/* Character Counter */
+.cbp-counter { font-size: 11px; color: var(--cbp-text-light); text-align: right; margin-top: 5px; font-weight: 500; }
+
+/* Custom Scrollbar */
+.cbp-country-list::-webkit-scrollbar { width: 6px; }
+.cbp-country-list::-webkit-scrollbar-track { background: #f1f5f9; }
+.cbp-country-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+.cbp-country-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
