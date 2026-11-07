@@ -23,3 +23,8 @@ The plugin header specifies WordPress 6.0 or later and PHP 8.0 or later.
 [View the TJS StudySteps consultation form](https://tjsstudysteps.com/book-consultation-form/). Abdul Hameed confirms this plugin is deployed and tested on the live site.
 
 A browser check on 7 November 2026 verified that changing the date loaded available appointment times in the displayed Asia/Singapore timezone. The form showed required contact fields and a consent checkbox. No booking was submitted. Calendar synchronization, delivery of notifications and the deployed revision were not independently verified.
+
+
+## Version and licensing
+
+The repository’s plugin header declares version 1.2.0, WordPress 6.0 or later and PHP 8.0 or later. The header and repository root do not specify a license. Consult the maintainer about permission to reuse or redistribute the code.
