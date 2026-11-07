@@ -16,3 +16,10 @@ The plugin header specifies WordPress 6.0 or later and PHP 8.0 or later.
 - `src/` — PHP source.
 - `templates/` and `form-files/` — template and form files.
 - `assets/` — supporting assets.
+
+
+## Production usage
+
+[View the TJS StudySteps consultation form](https://tjsstudysteps.com/book-consultation-form/). Abdul Hameed confirms this plugin is deployed and tested on the live site.
+
+A browser check on 7 November 2026 verified that changing the date loaded available appointment times in the displayed Asia/Singapore timezone. The form showed required contact fields and a consent checkbox. No booking was submitted. Calendar synchronization, delivery of notifications and the deployed revision were not independently verified.
